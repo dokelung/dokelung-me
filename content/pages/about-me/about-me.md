@@ -2,14 +2,12 @@ Title: About Me
 Slug: about-me
 
 <div class="uk-thumbnail uk-thumbnail-small">
-    <img src="{SITEURL}/images/dokelung.jpg" alt="dokelung.jpg">
+    <img src="http://dokelung.me/images/dokelung.jpg" alt="dokelung.jpg">
 </div>
 
-## Education
+你好，我是袁克倫，你可以叫我 dokelung，我是一名小小軟體工程師，專長是電子設計自動化。 愛學習也愛分享，寫書來推廣熱愛的知識一直是我的夢想。
+本應與 C++ 共度一生，卻意外成為 Python 的終極狂熱者，幾乎生活上的大小事都想用 Python 解決(可惜吃飯和上廁所不行)，酷愛有關於 Python 的一切。
 
-* M.S., EDA group-[ALCom lab](http://alcom.ee.ntu.edu.tw/), Graduate Institute of Electronics Engineering, National Taiwan University, 2011-2013.
-* B.S., Electrical Engineering, National Cheng Kung University, 2007-2011.
-  
 ## Experiences
 
 * R & D Engineer, [ATopTech](https://www.atoptech.com/), 2015-now.
@@ -38,14 +36,16 @@ Slug: about-me
 
 ## Publication
 
-* Books
-    * Is's Django - 用Python迅速打造Web應用. **袁克倫** / 楊孟穎. 碁峰, 2015/06. 
-        * 書籍專頁: [Github wiki](https://github.com/its-django/mysite/wiki), [FB粉絲頁](https://www.facebook.com/itsdjango?ref=aymt_homepage_panel)
-        * 哪裡買得到: [天瓏](https://www.tenlong.com.tw/items/9863475467?item_id=1004939), [博客來](http://www.books.com.tw/products/0010676433), [碁峰](http://books.gotop.com.tw/v_ACL043800)
+### Books
 
-* IEEE/ACM Conference Papers
-	*	**K.-L. Yuan**, C.-Y. Kuo, J.-H. Jiang, and M.-Y. Li. “Encoding Multi-Valued Functions for Symmetry”. _In Proc. of Int’ll Conf. on Computer-Aided Design(**ICCAD-2013**)_, 2013. [full text](http://alcom.ee.ntu.edu.tw/publications/iccad13-symm.pdf)
-	*	S.-Y. Ho, S.-R. Lin, **K.-L. Yuan**, C.-Y. Kuo, K.-Y. Liao, J.-H. Jiang, and C.-M. Li. “Automatic Test Pattern Generation for Delay Defects Using Timed Characteristic Functions”. _In Proc. of Int’ll Conf. on Computer-Aided Design(**ICCAD-2013**)_, 2013. [full text](http://alcom.ee.ntu.edu.tw/publications/iccad13-delaytest.pdf)
+* Is's Django - 用Python迅速打造Web應用. **袁克倫** / 楊孟穎. 碁峰, 2015/06. 
+    * 書籍專頁: [Github wiki](https://github.com/its-django/mysite/wiki), [FB粉絲頁](https://www.facebook.com/itsdjango?ref=aymt_homepage_panel)
+    * 哪裡買得到: [天瓏](https://www.tenlong.com.tw/items/9863475467?item_id=1004939), [博客來](http://www.books.com.tw/products/0010676433), [碁峰](http://books.gotop.com.tw/v_ACL043800)
+
+### IEEE/ACM Conference Papers
+
+*    **K.-L. Yuan**, C.-Y. Kuo, J.-H. Jiang, and M.-Y. Li. “Encoding Multi-Valued Functions for Symmetry”. _In Proc. of Int’ll Conf. on Computer-Aided Design(**ICCAD-2013**)_, 2013. [full text](http://alcom.ee.ntu.edu.tw/publications/iccad13-symm.pdf)
+*    S.-Y. Ho, S.-R. Lin, **K.-L. Yuan**, C.-Y. Kuo, K.-Y. Liao, J.-H. Jiang, and C.-M. Li. “Automatic Test Pattern Generation for Delay Defects Using Timed Characteristic Functions”. _In Proc. of Int’ll Conf. on Computer-Aided Design(**ICCAD-2013**)_, 2013. [full text](http://alcom.ee.ntu.edu.tw/publications/iccad13-delaytest.pdf)
   
 ## Honors
 
@@ -55,3 +55,8 @@ Slug: about-me
 * Award for Excellent Performance, Trend Micro Programming Contest, 2012.
 * The Second Award, ICCAD Contest, Ministry of Education, Taiwan, 2011.
 * Award of outstanding student for academic achievement, Dept. of EE, NCKU, 2007-2008. ( 成大書卷獎 )
+
+## Education
+
+* M.S., EDA group-[ALCom lab](http://alcom.ee.ntu.edu.tw/), Graduate Institute of Electronics Engineering, National Taiwan University, 2011-2013.
+* B.S., Electrical Engineering, National Cheng Kung University, 2007-2011.

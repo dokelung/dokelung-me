@@ -83,7 +83,7 @@ AUTHOR_INFO = {
     ),
     'intro': [
         'Hi, my name is Ko-Lung Yuan!',
-        '你好，我是袁克倫，你可以叫我 dokelung，我是一名小小軟體工程師，專長是電子設計自動化。 愛學習也愛分享，寫書來推廣熱愛的知識一直是他的夢想。 本應與 C++ 共度一生，卻意外成為 Python 的終極狂熱者，幾乎生活上的大小事都想用 Python 解決(可惜吃飯和上廁所不行)，酷愛有關於 Python 的一切。'
+        '你好，我是袁克倫，你可以叫我 dokelung，我是一名小小軟體工程師，專長是電子設計自動化。 愛學習也愛分享，寫書來推廣熱愛的知識一直是我的夢想。 本應與 C++ 共度一生，卻意外成為 Python 的終極狂熱者，幾乎生活上的大小事都想用 Python 解決(可惜吃飯和上廁所不行)，酷愛有關於 Python 的一切。'
     ],
     'url': os.path.join(SITEURL, 'pages', 'about-me'),
     'social': SOCIAL,
@@ -110,7 +110,8 @@ SIMPLE_PANELS = (
             'string': 'book',
             'type': 'danger',
         },
-        'title': "dokelung - Python 快速入門",
+        'title': "Python 快速入門",
+        'photo': 'python_quickstart.jpg',
         'link': ('Read it!', 'https://www.gitbook.com/book/dokelung/dokelung-python-quickstart/details'),
     },
 )
