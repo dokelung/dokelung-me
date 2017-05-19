@@ -136,6 +136,9 @@ NAV = {
             'primary': ('About me', AUTHOR_INFO['url']),
         },
         {
+            'primary': ('Projects', os.path.join(SITEURL, 'pages', 'projects')),
+        },
+        {
             'primary': ('Category', os.path.join(SITEURL, 'categories.html')),
             'secondary': (
                 {'type':'header', 'name':'Programming'},
