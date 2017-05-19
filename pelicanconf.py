@@ -112,6 +112,7 @@ SIMPLE_PANELS = (
         },
         'title': "Python 快速入門",
         'photo': 'python_quickstart.jpg',
+        'content': '適合初學者的 Python 快速入門',
         'link': ('Read it!', 'https://www.gitbook.com/book/dokelung/dokelung-python-quickstart/details'),
     },
 )
