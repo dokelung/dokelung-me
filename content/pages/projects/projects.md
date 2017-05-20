@@ -13,6 +13,7 @@ Slug: projects
         <tr>
             <td><a href="https://github.com/dokelung/Python-QA"> Python-QA </a></td>
             <td> 透過問答，了解世界。Python 的世界 </td>
+        </tr>
         <tr>
             <td><a href="https://github.com/dokelung/jojo"> jojo </a></td>
             <td> A friendly Pelican theme </td>
@@ -20,7 +21,6 @@ Slug: projects
         <tr>
             <td><a href="https://github.com/dokelung/tinp"> tinp </a></td>
             <td> Library of input functions with type conversion </td>
-        </tr>
         </tr>
         <tr>
             <td><a href="https://github.com/dokelung/minickt"> minickt </a></td>

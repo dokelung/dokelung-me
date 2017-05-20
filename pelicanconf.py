@@ -136,6 +136,16 @@ NAV = {
             'primary': ('About me', AUTHOR_INFO['url']),
         },
         {
+            'primary': ('Materials', '#'),
+            'secondary': (
+                {'type':'header', 'name':'Publications'},
+                {'link':('Books', os.path.join(SITEURL, 'pages', 'books')) },
+                {'link':('Papers', os.path.join(SITEURL, 'pages', 'papers')) },
+                {'type':'divider'},
+                {'link':('Presentations', os.path.join(SITEURL, 'pages', 'presentations')) },
+            )
+        },
+        {
             'primary': ('Projects', os.path.join(SITEURL, 'pages', 'projects')),
         },
         {
@@ -202,3 +212,10 @@ JTABLE_TEMPLATE = """
 
 DISQUS_SITENAME = "dokelung-me"
 DISQUS_CONFIG = True
+
+#GOOGLE_ANALYTICS = "UA-56219026-2"
+#GOOGLE_SERVICE_ACCOUNT = "dokelung-me@dokelung-me.iam.gserviceaccount.com"
+#GOOGLE_KEY_FILE = "dokelung-me-5415227b9742.p12"
+#GA_START_DATE = "2017-01-01"
+#GA_END_DATE = "today"
+#GA_METRIC = "ga:pageview"
