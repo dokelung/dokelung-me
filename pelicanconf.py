@@ -31,7 +31,7 @@ PATH = 'content'
 
 PLUGIN_PATHS = ['../pelican-plugins']
 
-PLUGINS = ['tipue_search', 'just_table', "representative_image"]
+PLUGINS = ['tipue_search', 'just_table', "representative_image", "ga_page_view"]
 
 STATIC_PATHS = ['images', 'articles']
 
@@ -213,9 +213,10 @@ JTABLE_TEMPLATE = """
 DISQUS_SITENAME = "dokelung-me"
 DISQUS_CONFIG = True
 
+PAGEVIEW = True
 GOOGLE_ANALYTICS = "UA-56219026-2"
-#GOOGLE_SERVICE_ACCOUNT = "dokelung-me@dokelung-me.iam.gserviceaccount.com"
-#GOOGLE_KEY_FILE = "dokelung-me-5415227b9742.p12"
-#GA_START_DATE = "2017-01-01"
+#GOOGLE_SERVICE_ACCOUNT = "dokelung-me-633@dokelung-me-168318.iam.gserviceaccount.com"
+#GOOGLE_KEY_FILE = "client_private.p12"
+#GA_START_DATE = "2017-05-10"
 #GA_END_DATE = "today"
-#GA_METRIC = "ga:pageview"
+#GA_METRIC = "ga:pageviews"
