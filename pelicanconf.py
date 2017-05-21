@@ -55,6 +55,8 @@ following settings
 SHORTCUT_ICON = 'dokelung.jpg'
 
 # right side panels
+PAGEVIEW_URL = "https://www.f-counter.net/j/28/1495398799/"
+
 SOCIAL = {
     'style': {
         'size': 'medium', # small, medium, large
@@ -213,7 +215,6 @@ JTABLE_TEMPLATE = """
 DISQUS_SITENAME = "dokelung-me"
 DISQUS_CONFIG = True
 
-PAGEVIEW = True
 GOOGLE_ANALYTICS = "UA-56219026-2"
 #GOOGLE_SERVICE_ACCOUNT = "dokelung-me-633@dokelung-me-168318.iam.gserviceaccount.com"
 #GOOGLE_KEY_FILE = "client_private.p12"
