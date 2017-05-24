@@ -29,7 +29,17 @@ Slug: books
             <td> 適合初學者的 Python 快速入門 </td>
             <td>
                 <ul>
-                    <li><a href="http://dokelung.me/pages/about-me/"> 袁克倫(dokelung) </a></li>
+                    <li><a href="http://dokelung.me/pages/about-me/"> dokelung </a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><img class="uk-thumbnail uk-thumbnail-small uk-align-center" src="http://dokelung.me/images/pelican_guide.jpg"></td>
+            <td><a href="https://www.gitbook.com/book/dokelung/dokelung-pelican-guide/details"> Pelican 架站攻略 </a></td>
+            <td> 快速而完整的 Pelican 架站指南 </td>
+            <td>
+                <ul>
+                    <li><a href="http://dokelung.me/pages/about-me/"> dokelung </a></li>
                 </ul>
             </td>
         </tr>
