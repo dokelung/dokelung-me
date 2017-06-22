@@ -402,6 +402,7 @@ def content():
 * function log
 * top function exception
 * click_
+* cache_json(mock function by modified file)
 
 ### 常用的內建裝飾器
 
@@ -507,13 +508,149 @@ def fibonacci(n):
 
 ```python
 >>> fibonacci(6)
->>> Run fibonacci(1): 1.1920928955078125e-06
+Run fibonacci(1): 1.1920928955078125e-06
 Run fibonacci(0): 2.1457672119140625e-06
 Run fibonacci(2): 0.00012111663818359375
 Run fibonacci(3): 0.00014090538024902344
 Run fibonacci(4): 0.0001609325408935547
 Run fibonacci(5): 0.0001819133758544922
 Run fibonacci(6): 0.0002009868621826172
+8
 ```
 
 很顯然地，對於費氏數列的每一項計算我們都只需要呼叫一次函數，這是因為計算過的結果已經被緩存起來了，當重複的運算要被執行時，`lru_cache` 會先從快取中尋找計算的結果。
+
+`lru_cache` 的原理很簡單，他利用 字典(dictionary) 來作為緩存區，每一次的函數呼叫，都會將該次呼叫的引數當作字典的 **鍵(key)**，將其回傳值當作字典的 **值(value)**，將此鍵值對存入字典中以便下次查詢。
+
+> 由這裡我們發現，`lru_cache` 的使用必須要注意一件事，那就是被 `lru_cache` 裝飾的函數，其所使用的引數都必須是 **可雜湊的(hashable)**。
+
+`lru_cache` 有兩個可選的參數，一個是 `maxsize`，用以指定緩存區的大小，代表著有多少呼叫的結果會被儲存，一旦緩存被填滿，較舊的結果將會被丟棄。
+
+另外一個參數是 `typed` ，這是個布林值，預設是 `False`。當它被設為 `True`時 ，一些同值但不同型的資料 (例如整數 `1` 與浮點數 `1.0`) 會被視為不同的緩存鍵值。
+
+### 用裝飾器來註冊函數
+
+接著讓我們來介紹一個小 trick，通常我們會在裝飾器中製造一個新的函數用以取代原函數以達到 **裝飾** 的效果，而為了展現與原函數相似的行為，我們會在此新函數內呼叫原函數，而裝飾的部分大致上會展現在新函數中原函數被呼叫的前後，這樣說明有點難以明白，我們直接看例子：
+
+```python
+def deco(func):
+    @wraps(func)
+    def new_function(*args, **kwargs):
+        # 裝飾點1: 在原函數呼叫之前做些什麼...
+        result = func(*args, **kwargs)
+        # 裝飾點2: 在原函數呼叫之後做些什麼...
+        return result
+    return new_function
+```
+
+上面是一個典型的裝飾器結構，通常我們會在 `裝飾點1` 和 `裝飾點2` 這兩個地方做手腳來改變原本函數的行為，但其實還有一個地方可以利用：
+
+```python
+def deco(func):
+    # 裝飾點3: 在裝飾的當下註冊函數 func ...
+    @wraps(func)
+    def new_function(*args, **kwargs):
+        # 裝飾點1: 在原函數呼叫之前做些什麼 ...
+        result = func(*args, **kwargs)
+        # 裝飾點2: 在原函數呼叫之後做些什麼 ...
+        return result
+    return new_function
+```
+
+沒錯，我們不必等到裝飾過的新函數被呼叫了才進行裝飾的動作，我們可以在 **裝飾的當下** 立刻將原函數給註冊起來，比如說在 Flask 等 web 框架中會使用到的 url mapping 機制就是這樣完成的，我們直接來看範例：
+
+> 這個範例中，作者寫了一個跟 `flask.Flask.route` 類似的裝飾器，但當然是簡化許多的版本。
+
+```python
+from functools import wraps
+
+url_mapping = {}
+
+def myroute(url):
+    def deco(view_func):
+        url_mapping[url] = view_func # 註冊 url 及其對應的 view function
+        return view_func             # 把原函數當成修飾過的函數即可，因為這次修飾的重點在於註冊，而非改變原函數行為
+    return deco
+```
+
+> 這個結構跟一開始介紹的裝飾器不大相同，讀者可能會很疑惑，但事實上，裝飾器不一定要製造並回傳一個新函數，他也可以單純的製造一個空間和時機讓我們能夠註冊要被裝飾的原函數。也就是說，有的時候裝飾不見得是改變函數行為，**記憶** 函數也可以是裝飾的一環。
+
+有了 `myroute` 之後，我就可以用它來裝飾我所有的 **視圖函數(view function)**，並且將 url mapping 記憶在字典中：
+
+```python
+@myroute('/')
+def index():
+    return 'Index Page'
+    
+@myroute('/hello')
+def hello():
+    return 'Hello, World'
+```
+
+我們來看看裝飾過後製造出來的字典 `url_mapping` 長什麼樣子：
+
+```python
+>>> url_mapping
+{'/': <function __main__.index>, '/hello': <function __main__.hello>}
+```
+
+很好，我們利用註冊完成了 url 映射的功能了！
+
+### 裝飾器小結
+
+在這篇文章的前半部，我們認識了裝飾器的基本用法與寫法，學到了用 `functools.wraps` 來完善裝飾器的做法，更了解到了帶有參數的裝飾器是如何完成的。接著，我們談及了裝飾器的範例和介紹了內建可用的幾個裝飾器，最後用裝飾器提供的額外修飾空間完成了函數註冊的功能。
+
+其實裝飾器的應用遠不止此，其議題也不勝枚舉，包含變數範圍，non local 與 closure 的問題，有興趣的讀者可以去找尋更多有關的資料，但礙於本文篇幅及講者演講的範圍，只好忍痛割捨了。
+
+> 其實只是作者懶了ＸＤ，非常建議大家馬上去買一本 Fluent Python，保證可以從 Luciano 大叔身上學到不少！
+
+## 環境管理器
+
+接著我們進入另一個主題：**環境管理器(context manager)**，環境管理器是一個能夠撘配 `with` 使用的類別，他能夠在切入環境時進行環境的設定和若干預處理的行為，並且能夠在離開環境時進行重置並做善後處理。
+
+最基本的例子就是我們開頭提到的檔案開關：
+
+```python
+with open(file_name, 'w') as fp:
+    # do somethings here
+```
+
+這裡我們考慮到另外一個例子：計時功能的環境管理器。沒錯！就跟上一個主題中提到的裝飾器 `clock` 一樣，只是我們這次要用環境管理器來完成它！
+
+我們先來瞧瞧如何使用這樣的環境管理器，假設我們的環境管理器是一個叫做 `Clock` 的類別：
+
+```python
+with Clock('snooze') as clock:
+    snooze(3)
+
+with clock('sum_of_square') as clock:
+    print(sum_of_square([1, 2, 3, 4, 5]))
+    
+clock.report()
+```
+
+```python
+import time
+
+class Clock:
+    """用以計時的環境管理器"""
+    def __init__(self, name):
+        self.record = {}
+        self(name)
+    
+    def __call__(self, name):
+        self.name = name
+        return self
+    
+    def __enter__(self):
+        self.t0 = time.time()
+        return self
+        
+    def __exit__(self, exc_type, exc_value, traceback):
+        elapsed = time.time() - self.t0
+        self.record[self.name] = elapsed
+        print(elapsed)
+        
+    def report(self):
+        print(self.record)
+```
