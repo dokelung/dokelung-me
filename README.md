@@ -25,13 +25,13 @@ $ git clone https://github.com/dokelung/dokelung.github.io.git
 $ mkdir test-output
 
 # generate site for testing
-$ pelican content -o test-output -s pelican.conf
+$ pelican content -o test-output -s pelicanconf.py
 $ cd test-output
 $ python3 -m pelican.server # then open browser and goto "localhost:8000", stop with CTRL+C
 
 # generate real site
-$ pelican content -o dokelung.github.io -s pelican.conf
-$ cd doeklung.github.io
+$ pelican content -o dokelung.github.io -s pelicanconf.py
+$ cd dokelung.github.io
 $ git add .
 $ git commit -m "update site"
 $ git push
