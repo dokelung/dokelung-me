@@ -1,4 +1,4 @@
-# 別重複發明三明治:Python 的裝飾器和環境管理器
+# 別重複發明三明治：Python 的裝飾器和環境管理器
 
 今年的 Pycon Taiwan，有一篇我滿感興趣的演講：Don't Reinvent Sandwich - Python Decorator and Context Manager，講者是蕭聖穎先生。
 
