@@ -13,7 +13,7 @@ Slug: dont-reinvent-sandwich
 > 該演講的 [投影片][Slides] 和講者的 [Facebook][Speeker FB]。
 
 由於我對於語言本身的設計和使用慣例非常感興趣，所以就去朝聖了一下。講題的主旨大略是：我們通常透過抽取一段重複出現的 **連續代碼** 成為 **函數 (function)** 或 **類別 (class)** 來重複利用他，避免重複發明輪子。但有的時候想要抽取的部分並非 **中間** (
-三明治的麵包）連續的部分，而是 **頭尾** （三明治的麵包），這個時候我們便需要使用一些其他的手法或機制來達到 reuse 的目的了。Python 正好非常友善地提供了 **裝飾器 (decorator)** 和 **環境管理器 (context manager)**，可以很容易地達成我們的目的。
+三明治的餡）連續的部分，而是 **頭尾** （三明治的麵包），這個時候我們便需要使用一些其他的手法或機制來達到 reuse 的目的了。Python 正好非常友善地提供了 **裝飾器 (decorator)** 和 **環境管理器 (context manager)**，可以很容易地達成我們的目的。
 
 這場演講給出了非常有意思的想法，尤其是裝飾器與環境管理器的互通。但很可惜的是，雖然 Python 的 decorator 和 context manager 非常有自己的特色也是許多大型專案常用的技術，但是對於初學者而言還是一個相對進階的主題，我認為初學者並不容易在這短短的四十五分鐘內了解全部的內容，所以寫了這篇文章，希望能詳細地頗析本場演講所涵蓋到的內容，期待能對大家有所幫助，不過所學慎淺，班門弄斧不免貽笑大方，那就還請講者及各路高手海涵。
 
@@ -150,7 +150,7 @@ sum_of_square = clock(sum_of_square)
 而通常這個修飾過的函數也會被賦值給原本的函數變數，意思是我們通常不會為修飾過的函數另取名稱，而會沿用原來的名字：
 
 ```python
-# 通常不會為修飾過的函數另娶名稱
+# 通常不會為修飾過的函數另取名稱
 clock_snooze = clock(snooze)
 clock_sum_of_square = clock(sum_of_square)
 
@@ -355,7 +355,7 @@ content = tag(content, 'p')
 
 ```python
 def tag(name):
-    # 這個才是真正的裝飾器，為了把 tag 讓給更上一層的函數，這裡我們使用 `deco` 這個名字
+    # 這個才是真正的裝飾器，為了把 tag 讓給更上一層的函數，這裡我們使用 deco 這個名字
     def deco(func):
         @wraps
         def new_func():
@@ -363,7 +363,7 @@ def tag(name):
             func()
             print('</{}>'.format(name))
         return new_func
-     return tag
+    return deco
 ```
 
 我們把結構多加了一層，當我們呼叫 `tag(TAG_NAME)` 時，會得到一個真正的裝飾器，接著才呼叫該裝飾器來得到一個裝飾後的函數：
