@@ -52,7 +52,7 @@ following settings
 """
 
 # site settings
-SHORTCUT_ICON = 'dokelung.jpg'
+SHORTCUT_ICON = 'dokelung.jpeg'
 
 # right side panels
 PAGEVIEW_URL = "https://www.f-counter.net/j/28/1495398799/"
@@ -78,7 +78,7 @@ SOCIAL = {
 }
 AUTHOR_INFO = {
     'id': AUTHOR,
-    'photo': 'dokelung.jpg',
+    'photo': 'dokelung.jpeg',
     'intro_keywords': (
         ('a book author', 'https://github.com/its-django/mysite/wiki'),
         ('a pythoner', 'https://github.com/dokelung'),
